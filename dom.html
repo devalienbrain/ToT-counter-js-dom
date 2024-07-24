@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Explore</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="box-inside">
+        <p id="text">DOM Understanding</p>
+      </div>
+    </div>
+    <div>
+      <div class="common">1</div>
+      <div class="common">2</div>
+      <div class="common">3</div>
+      <div class="common">4</div>
+      <div class="common">5</div>
+    </div>
+    <button disabled>TEST</button>
+    <script>
+      const getPById = document.getElementById("text");
+      // console.log(getPById);
+      console.log(getPById.hasAttribute("id"));
+      getPById.setAttribute("class", "new-by-dom");
+      console.log(getPById);
+      //** Styling on element
+      // getPById.style.color = "red";
+      // console.log(getPById.innerHTML, getPById.innerText);
+
+      // const getInnerDivById = document.getElementById("box-inside");
+      // console.log(getInnerDivById);
+      // getPById.style.border = "1px solid black";
+      // console.log(getInnerDivById.innerHTML, getInnerDivById.innerText);
+      // getInnerDivById.innerHTML = "Changed by DOM";
+
+      //** Selecting Elements
+      const getDivsByClass = document.getElementsByClassName("common");
+      console.log(getDivsByClass[0]);
+      for (let i = 0; i < getDivsByClass.length; i++) {
+        getDivsByClass[i].style.color = "red";
+      }
+
+      // ** Modifying Elements Attributes and Classes
+
+      // .addEventListener(ongetAttribute().log("I am clicked", onclick));
+    </script>
+  </body>
+</html>

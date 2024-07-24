@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        width: full;
+        height: 100vh;
+        background-color: black;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 20px;
+      }
+      header > h1 {
+        padding-bottom: 10px;
+      }
+      section {
+        min-height: 50vh;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid whitesmoke;
+        padding: 40px 60px;
+      }
+      .count-container {
+        padding: 50px;
+      }
+      #count {
+        font-size: 124px;
+        font-weight: bolder;
+        color: aqua;
+      }
+      button {
+        padding: 10px 20px;
+        font-weight: bold;
+        border: 1px solid white;
+        border-radius: 4px;
+      }
+      .inc {
+        background-color: greenyellow;
+      }
+      .dec {
+        background-color: rgb(184, 34, 34);
+        color: white;
+      }
+      .inc:hover {
+        background-color: rgb(135, 210, 23);
+      }
+      .dec:hover {
+        background-color: red;
+      }
+      footer > p {
+        padding: 30px 0 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Counter</h1>
+      </header>
+      <section>
+        <div class="count-container">
+          <span id="count"></span>
+        </div>
+        <div>
+          <button onclick="doIncrement()" class="inc">Increment</button>
+          <button onclick="doDecrement()" id="dec" class="dec">
+            Decrement
+          </button>
+        </div>
+      </section>
+
+      <footer>
+        <p><small>All rights preserved @Hassan Sabbir</small></p>
+      </footer>
+    </main>
+    <script>
+      let currentCount = localStorage.getItem("key") || 0;
+      document.getElementById("count").innerText = currentCount;
+      // console.log(currentCount)
+      if (currentCount == 0) {
+        // console.log(document.getElementById("dec").style.backgroundColor);
+        // document.getElementById("dec").style.backgroundColor = "white";
+        document.getElementById("dec").setAttribute("disabled", "disabled");
+        console.log(document.getElementById("dec"));
+      }
+      function doIncrement() {
+        // document.getElementById("dec").style.backgroundColor = "";
+        document.getElementById("dec").removeAttribute("disabled");
+        console.log(document.getElementById("dec"));
+        // currentCount = document.getElementById("count").innerText;
+        incrementedCount = ++currentCount;
+        // console.log(incrementedCount, typeof incrementedCount);
+        document.getElementById("count").innerText = incrementedCount;
+        localStorage.setItem("key", incrementedCount);
+      }
+      function doDecrement() {
+        // currentCount = document.getElementById("count").innerText;
+        if (currentCount == 0) {
+          // console.log(document.getElementById("dec").style.backgroundColor);
+          // document.getElementById("dec").style.backgroundColor = "white";
+          document.getElementById("dec").setAttribute("disabled", "disabled");
+          console.log(document.getElementById("dec"));
+          return;
+        }
+        decrementedCount = --currentCount;
+        // console.log(decrementedCount);
+        document.getElementById("count").innerText = decrementedCount;
+        localStorage.setItem("key", decrementedCount);
+      }
+    </script>
+  </body>
+</html>
